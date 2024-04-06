@@ -1,24 +1,52 @@
 import { useState } from "react";
+import "./App.css";
 
-function App() {
+const App = () => {
+  const [isCompleted, setIsCompleted] = useState(false);
   return (
-    <div className="to-do-list">
-      <nav>
-        <div className="logo">
-          <img src="/images/logo.png"></img>
+    <div className="App">
+      <h1>My Todos</h1>
+      <div className="todo-wrapper">
+        <div className="todo-input">
+          <div className="todo-input-item">
+            <label>Title</label>
+            <input type="text" placeholder="what is the Task title" />
+          </div>
+          <div className="todo-input-item">
+            <label>Descripton</label>
+            <input type="text" placeholder="what is the task description" />
+          </div>
+
+          <div className="todo-input-item">
+            <button type="button" className="primary-btn">
+              Add
+            </button>
+          </div>
         </div>
-        <div className="title">
-          <h1>To Do List app</h1>
+        <div className="btn-area">
+          <button
+            type="button"
+            className={`secondry-btn ${isCompleted === false && "active"}`}
+            onClick={() => setIsCompleted(false)}
+          >
+            Todo
+          </button>
+          <button
+            className={`secondry-btn ${isCompleted === true && "active"}`}
+            onClick={() => setIsCompleted(true)}
+          >
+            Completed
+          </button>
         </div>
-      </nav>
-      <div className="task-registration">
-        <form>
-          <input type="text" placeholder="Enter Task"></input>
-          <input type="submit" value="Add Task" />
-        </form>
+        <div className="to-do-list">
+          <div className="todo-list-item">
+            <h1>Task1</h1>
+            <p>description</p>
+          </div>
+        </div>
       </div>
     </div>
   );
-}
+};
 
 export default App;
