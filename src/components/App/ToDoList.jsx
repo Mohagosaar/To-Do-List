@@ -12,12 +12,14 @@ const ToDoList = () => {
     { task: "I will be studying javascript", isCompleted: false },
   ]);
 
-  // Function to handle form submission
   const handleForm = (event) => {
     event.preventDefault();
-    // Updated to correctly access task value from state
+    if (!task) {
+      alert("Please provide a valid task");
+      return;
+    }
     setTodos([...todos, { task: task, isCompleted: true }]); // Updated to correctly update todos state
-    setTask(""); // Clear the task input after submission
+    setTask("");
   };
 
   // Component JSX
@@ -29,6 +31,7 @@ const ToDoList = () => {
       >
         <h1 className=" text-white text-center">To do List App</h1>
         {/* Form for adding tasks */}
+
         <form className="d-flex" onSubmit={handleForm}>
           <input
             className="form-control me-2"
@@ -48,8 +51,16 @@ const ToDoList = () => {
               backgroundColor: todo.isCompleted ? "#87FC68" : "lightgray",
             }}
           >
-            <div>{todo.task}</div>
-            {/* Changed todos to todo */}
+            <div className=" me -auto">
+              {todo.task}{" "}
+              <i
+                className={`h5 me-2 ${
+                  todo.isCompleted ? "bi bi-check-square" : "bi bi-square"
+                }`}
+              ></i>
+              <i className="bi bi-trash text-danger h5"></i>
+            </div>
+            <div></div>
           </div>
         ))}
       </div>
