@@ -3,8 +3,10 @@
 import { useState } from "react";
 
 // ToDoList component definition
-const ToDoList = () => {
-  const [task, setTask] = useState(""); // Changed variable name from todos to task
+const ToDoList = (props) => {
+  const { getdata_todos } = props;
+  const [task, setTask] = useState("");
+  console.log("show data", getdata_todos); // Changed variable name from todos to task
 
   const [todos, setTodos] = useState([
     { task: "I will be going gym", isCompleted: false },
@@ -20,6 +22,12 @@ const ToDoList = () => {
     }
     setTodos([...todos, { task: task, isCompleted: true }]); // Updated to correctly update todos state
     setTask("");
+  };
+  const chnageTaskStatus = (index) => {
+    let newTodos = [...todos];
+    newTodos[index].isCompleted = !newTodos[index].isCompleted;
+
+    setTodos(newTodos);
   };
 
   // Component JSX
@@ -52,11 +60,15 @@ const ToDoList = () => {
             }}
           >
             <div className=" me -auto">
-              {todo.task}{" "}
+              {todo.task}
               <i
                 className={`h5 me-2 ${
                   todo.isCompleted ? "bi bi-check-square" : "bi bi-square"
                 }`}
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  chnageTaskStatus(index);
+                }}
               ></i>
               <i className="bi bi-trash text-danger h5"></i>
             </div>

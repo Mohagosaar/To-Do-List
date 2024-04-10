@@ -2,26 +2,19 @@ const express = require("express");
 const router = express.Router();
 const pool = require("../modules/pool.js");
 
-let person = {
-  id: 1,
-  name: "Mohamed Ali",
-  tell: 555,
-};
-
-// GET
 router.get("/", (request, response) => {
-  response.json(person);
+  console.log("testing get");
+  let queryText = `SELECT * FROM task ORDER BY taskid;`;
+  pool
+    .query(queryText)
+    .then((result) => {
+      response.send(result.rows);
+    })
+    .catch((error) => {
+      console.log("error in query", error);
+      response.sendStatus(500);
+    });
 });
-// router.get("/", (req, res) => {
-//   pool.query("SELECT * FROM tasks", (error, results) => {
-//     if (error) {
-//       console.error("Error getting tasks:", error);
-//       res.status(500).json({ message: "Server error" });
-//     } else {
-//       res.json(results.rows);
-//     }
-//   });
-// });
 
 // POST
 
