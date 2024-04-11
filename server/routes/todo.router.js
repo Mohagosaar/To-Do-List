@@ -17,6 +17,21 @@ router.get("/", (request, response) => {
 });
 
 // POST
+router.post("/", (req, res) => {
+  const { todos } = req.body;
+  const taskName = todos[0];
+
+  let queryText = `INSERT INTO "task" ("taskName") VALUES ($1)`;
+  pool
+    .query(queryText, [taskName])
+    .then(() => {
+      res.sendStatus(201);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.sendStatus(500);
+    });
+});
 
 // PUT
 
