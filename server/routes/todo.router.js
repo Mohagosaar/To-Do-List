@@ -20,6 +20,38 @@ router.get("/", (request, response) => {
 
 // PUT
 
+router.put("/:id", (req, res) => {
+  console.log(req.params);
+  let queryText = `
+  UPDATE "task" SET "isComplete" = NOT "isComplete"
+  WHERE "taskid" = $1;
+  `;
+  pool
+    .query(queryText, [req.params.id])
+    .then(() => {
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.sendStatus(500);
+    });
+});
+
 // DELETE
+//DELETE
+
+router.delete("/:id", (req, res) => {
+  console.log("req.params", req.params);
+  let queryText = `DELETE FROM "task" WHERE "taskid" = $1;`;
+  pool
+    .query(queryText, [req.params.id])
+    .then(() => {
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log("error in req.params.id", error);
+      res.sendStatus(500);
+    });
+});
 
 module.exports = router;

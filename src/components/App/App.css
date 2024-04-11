@@ -1,0 +1,13 @@
+h1 {
+  background-color: gre;
+}
+.toggle {
+  width: 400px;
+  background-color: blue;
+}
+.content {
+  width: 400px;
+  background-color: beige;
+  margin: auto;
+  padding: auto;
+}
