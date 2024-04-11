@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import ToDoList from "./ToDoList.jsx";
+TaskForm;
 import LoadData from "../../LoadData.jsx";
 
 import axios from "axios";
 import "./App.css";
+import TaskForm from "../../TaskForm.jsx";
 
 const App = () => {
   const [toDoList, setTodoList] = useState([]);
@@ -29,6 +31,8 @@ const App = () => {
   return (
     <div>
       <h1>Osman Ali</h1>
+      <TaskForm />
+
       <LoadData />
       <ToDoList getdata_todos={toDoList} />
     </div>

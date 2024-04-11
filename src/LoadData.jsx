@@ -50,7 +50,7 @@ const LoadData = () => {
   }, []);
 
   return (
-    <div className="container m-5">
+    <div className="container">
       {todos.map((todoList) => {
         return (
           <div
