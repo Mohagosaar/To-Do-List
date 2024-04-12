@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import TaskForm from "./TaskForm";
 
 const LoadData = () => {
   const [todos, setTodos] = useState([]);
@@ -51,6 +52,7 @@ const LoadData = () => {
 
   return (
     <div className="container">
+      <TaskForm loadServer={loadServer} />
       {todos.map((todoList) => {
         return (
           <div

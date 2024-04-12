@@ -12,6 +12,8 @@ h1 {
   width: 500px;
   background-color: rgb(8, 87, 157);
   margin: auto;
+  margin-top: 100px;
+  margin-bottom: 0px;
   padding: auto;
   padding-top: 20px;
   padding-bottom: 20px;
