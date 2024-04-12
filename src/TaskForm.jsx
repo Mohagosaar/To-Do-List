@@ -22,7 +22,10 @@ const TaskForm = ({ loadServer }) => {
 
   return (
     <div>
-      <h1>Todo List app</h1>
+      <div className="content-hero">
+        <img src="/images/logo.png" />
+        <h1>Todo List app</h1>
+      </div>
       <input
         type="text"
         value={task}
